@@ -1,0 +1,49 @@
+## Nonparametric Correlations
+
+The following are three commonly used **nonparametric correlation coefficients**: **Spearman's rho (R)**, **Kendall's tau**, and the **Gamma coefficient**. These are useful when assumptions required for Pearson correlation (such as interval-level measurement or normality) are violated.
+
+**Note:** The chi-square statistic from two-way tables can also measure the association between variables measured on a nominal scale—something these correlation coefficients do not handle directly.
+
+---
+
+### Spearman's Rho (ρ)
+
+- Developed for variables measured on at least an **ordinal scale**.
+- Computed using the **ranked** values of variables.
+- Interpreted like Pearson's correlation — measures the **proportion of variability accounted for**, but in rank form.
+- Assumes a **monotonic relationship** (as one variable increases, so does the other, though not necessarily linearly).
+
+---
+
+### Kendall's Tau (τ)
+
+- Also based on **ranks** and applicable to **ordinal data**.
+- Statistically equivalent in power to Spearman's rho, but calculated differently.
+- **Interpretation:** Represents the **difference between the probability** that data are in the same order versus different orders.
+- Unlike Spearman's rho, Kendall's tau is often interpreted as a **measure of concordance probability**.
+
+**Note:** Kendall's tau and Spearman's rho are not numerically identical. Their relationship can be summarized (loosely) as:
+
+```
+-1 ≤ 3 * τ - 2 * ρ ≤ 1
+```
+
+---
+
+### Gamma Coefficient
+
+- Best used when **tied observations are frequent** in the data.
+- Like Kendall’s tau, Gamma is interpreted as a **difference in concordance probabilities**, but **adjusts for ties**.
+- Computed as:
+
+\[
+\text{Gamma} = \frac{P - Q}{P + Q}
+\]
+
+Where:
+- *P* = number of concordant pairs  
+- *Q* = number of discordant pairs
+
+Gamma is **more sensitive** than Kendall’s tau in the presence of tied ranks.
+
+---

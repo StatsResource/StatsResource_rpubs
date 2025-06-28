@@ -1,0 +1,71 @@
+---
+title: The Lognormal Probability Distribution
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+```{css my-header-colors, echo = FALSE}
+.page-header {
+    background-image: linear-gradient(120deg, green, lightgreen);
+}
+```
+
+
+# Lognormal Distribution
+
+The **lognormal distribution** is a continuous probability distribution of a random variable whose **logarithm is normally distributed**. If a variable \( X \) follows a lognormal distribution, then \( \ln(X) \) follows a normal distribution with parameters \( \mu \) and \( \sigma \).
+
+In notation:
+\[
+X \sim \text{Lognormal}(\mu, \sigma^2) \quad \text{means} \quad \ln(X) \sim \mathcal{N}(\mu, \sigma^2)
+\]
+
+---
+
+## Key Characteristics
+
+- Skewed to the **right** (positively skewed)
+- Only defined for **positive values**: \( X > 0 \)
+- Commonly used in fields where values must be positive and multiplicative processes are involved (e.g., finance, biology, environmental studies)
+
+---
+
+## Percentiles
+
+To compute percentiles of a **lognormal distribution**, we first compute the corresponding percentile of the associated **normal distribution**, then exponentiate:
+
+For the 90th, 95th, and 99th percentiles:
+
+\[
+\text{Normal:} \quad \mu + z_p \cdot \sigma
+\]
+\[
+\text{Lognormal:} \quad e^{\mu + z_p \cdot \sigma}
+\]
+
+Where \( z_p \) is the percentile value from the **standard normal distribution**:
+
+- \( z_{0.90} \approx 1.2816 \)
+- \( z_{0.95} \approx 1.6449 \)
+- \( z_{0.99} \approx 2.3263 \)
+
+---
+
+## Example
+
+Suppose \( \mu = 1 \), \( \sigma = 0.5 \). To calculate the 95th percentile:
+
+1. Compute the normal percentile:  
+\[
+\mu + z_{0.95} \cdot \sigma = 1 + (1.6449)(0.5) = 1.82245
+\]
+2. Convert to lognormal:  
+\[
+e^{1.82245} \approx 6.18
+\]
+
+So, the 95th percentile of this lognormal distribution is approximately **6.18**.
+
+---

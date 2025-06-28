@@ -1,0 +1,135 @@
+---
+title: The Exponential Probability Distribution
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+```{css my-header-colors, echo = FALSE}
+.page-header {
+    background-image: linear-gradient(120deg, green, lightgreen);
+}
+```
+
+
+# Exponential Distribution
+
+The **Exponential Distribution** is used to model the time between events in a process that occurs **continuously and independently** at a constant average rate. It is ideal for answering questions like:
+
+- How long until the next earthquake occurs?
+- What is the waiting time for the next customer to arrive?
+- How long will a machine operate before it breaks down?
+
+---
+
+## Definition
+
+The time \( X \) until the next event follows an exponential distribution if the **probability of occurrence in a short interval is proportional to the length of the interval**.
+
+A random variable \( X \) has an exponential distribution with **rate parameter** \( \lambda > 0 \), written:
+\[
+X \sim \text{Exponential}(\lambda)
+\]
+
+---
+
+## Probability Functions
+
+### Probability Density Function (PDF)
+
+\[
+f(x; \lambda) =
+\begin{cases}
+\lambda e^{-\lambda x}, & x \ge 0 \\
+0, & x < 0
+\end{cases}
+\]
+
+- \( \lambda \) is the **rate** (e.g. arrivals per hour)
+- \( \mu = \frac{1}{\lambda} \) is the **mean waiting time**
+
+### Cumulative Distribution Function (CDF)
+
+\[
+F(x; \lambda) =
+\begin{cases}
+1 - e^{-\lambda x}, & x \ge 0 \\
+0, & x < 0
+\end{cases}
+\]
+
+---
+
+## Key Properties
+
+- **Mean (expected value):**  
+  \[
+  E[X] = \frac{1}{\lambda}
+  \]
+
+- **Variance:**  
+  \[
+  V[X] = \frac{1}{\lambda^2}
+  \]
+
+- **Memoryless Property:**  
+  \[
+  P(X > s + t \mid X > s) = P(X > t)
+  \]  
+  The exponential is the *only* continuous distribution with this property.
+
+---
+
+## Lifetimes and Reliability
+
+Exponential distributions are widely used to model **lifespans** of components, times between events, and reliability:
+
+- Time to failure of electronics
+- Duration between bus arrivals
+- Period between incoming phone calls
+
+Let \( \mu = 5 \). Then the probability that a device lasts more than 6 years is:
+\[
+P(X \ge 6) = e^{-6 / 5} \approx 0.3012
+\]
+
+---
+
+## Example Calculations
+
+Suppose \( \mu = 5 \) years:
+
+- \( P(X \ge 6) = e^{-6/5} = 0.3012 \)
+- \( P(X \le 4) = 1 - e^{-4/5} = 0.5507 \)
+- \( P(5 \le X \le 6) = e^{-5/5} - e^{-6/5} = 0.3679 - 0.3012 = 0.0667 \)
+
+
+---
+
+## Review Questions
+
+**Q1.** A call center receives 5 calls per hour.
+
+- What is the expected time between calls?
+- What is the probability that the next call comes within 6 minutes?
+
+---
+
+**Q2.** The time between bank customers is exponentially distributed with \( \lambda = 0.25 \).
+
+- Find the mean wait time.
+- What is the probability the next arrival takes more than 5 minutes?
+- What is the probability it takes less than 2 minutes?
+
+---
+
+**Q3.** A gas station receives 3 customers/hour.
+
+- What is the expected wait time?
+- Compute \( E(T) \) and \( \text{Var}(T) \)
+- What's the chance the next customer arrives in 15 minutes?
+- What's the probability *no customer* arrives in the next 30 minutes?
+
+---
+

@@ -1,0 +1,77 @@
+## Part 2: More Inference Procedures
+
+### Formal Tests for Normality
+
+The following statistical tests help assess whether data follows a normal distribution or identify outliers:
+
+- **`ad.test()`** – Anderson-Darling test for normality  
+- **`shapiro.test()`** – Shapiro-Wilk test for normality  
+- **`ks.test()`** – Kolmogorov-Smirnov test for comparing distributions  
+- **`grubbs.test()`** – Grubbs test for detecting outliers  
+- **`chisq.test()`** – Chi-squared test for categorical data 
+
+
+---------------------------------------------------------------------
+
+\section{Testing The Assumption of Normality}
+For example, a fundamental assumption of linear models (i.e. regression models) is that the residuals (differences between observed and predicted value) are normally distributed with mean zero.
+
+
+The null hypothesis of both the `Anderson-Darling' and `Shapiro-Wilk' tests is that the population is normally distributed, and the alternative hypothesis is that the data is not normally distributed.
+
+For both tests, the null and alternative hypothesis are :\\
+\qquad $H_0 : $ The data set is normally distributed.\\
+\qquad $H_1 : $ The data set is \textbf{not} normally distributed.\\
+
+\subsection{Anderson-Darling Test}
+To implement the Anderson-Darling Test for Normality, one must first install the \textbf{\emph{nortest}} package.
+
+
+<pre><code>
+library(nortest)
+#Generate 100 normally distributed random numbers
+NormDat = rnorm(100)
+ad.test(NormDat)
+</code></pre>
+
+\subsection{Shapiro-Wilk Test}
+The Shapiro-Wilk test is directly implementable, without loading any additional packages.
+
+
+<pre><code>
+#Generate 100 normally distributed random numbers
+
+NormDat = rnorm(100)
+
+shapiro.test(NormDat)
+</code></pre>
+
+Sample output, using the randomly generated \texttt{NormDat} data set, is as follows:
+<pre><code>
+> shapiro.test(NormDat)
+
+        Shapiro-Wilk normality test
+
+data:  NormDat
+W = 0.9864, p-value = 0.4003
+</code></pre>
+Here, the p-value is well above the 0.05 threshold. Hence we \textbf{fail to reject} the null hypothesis, and may proceed to treat the \texttt{NormDat} data set as normally distributed.
+\subsection{Graphical Procedures for Assessing Normality}
+There are two useful graphical methods for determining whether a data set was normally distributed. The first is the histogram, which we have seen previously. If the histogram is reasonably bell-shaped, then the data can be assumed to be normally distributed. The relevant R command is \texttt{\textbf{hist()}}.
+
+
+The second is the \textbf{\emph{quantile-quantile plot}} (or QQ-plot).
+For assessing normality, we implement a qq-plot  using the \texttt{\textbf{qqnorm()}} function.
+
+Additionally the command \texttt{\textbf{qqline()}} function adds a trendline to a normal quantile-quantile plot. If the data is normally distributed, then the points on the plot follow the trendline.
+
+
+<pre><code>
+#Generate 100 normally distributed random numbers
+
+NormDat = rnorm(100)
+
+qqnorm(NormDat)
+qqline(NormDat)
+</code></pre>
+

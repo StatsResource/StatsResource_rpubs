@@ -1,0 +1,63 @@
+## Equality of Variances: F-Test Tutorial
+
+When comparing two datasets, it’s important to determine if they have the **same variance**. This is where the **F-test** comes in handy.
+
+### Hypotheses
+
+The F-test evaluates the following hypotheses:
+
+- **Null Hypothesis (H₀):** Variances are equal  
+  $$\sigma^2_1 = \sigma^2_2$$
+- **Alternative Hypothesis (Hₐ):** Variances are not equal  
+  $$\sigma^2_1 \ne \sigma^2_2$$
+
+Alternatively, the test evaluates the **ratio** of variances:
+
+- **H₀:**  
+  $$\frac{\sigma^2_1}{\sigma^2_2} = 1$$
+- **Hₐ:**  
+  $$\frac{\sigma^2_1}{\sigma^2_2} \ne 1$$
+
+A ratio of 1 means the variances are equal.
+
+---
+
+### Performing the Test in R
+
+You can use the `var.test()` function in R to run the F-test:
+
+```r
+var.test(x, y)
+```
+
+Just like `t.test()`, you can customize parameters such as the confidence level.
+
+---
+
+### Example Output
+
+```r
+> var.test(x, y)
+
+        F test to compare two variances
+
+data:  x and y
+F = 1.7849, num df = 99, denom df = 99, p-value = 0.004299
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 1.200948 2.652763
+sample estimates:
+ratio of variances
+          1.784889
+```
+
+---
+
+### Interpretation
+
+- **F Value:** 1.78 — This is the calculated ratio of sample variances.
+- **Degrees of Freedom (df):** 99 for each group.
+- **P-value:** 0.0043 — Since this is less than 0.05, you’d typically reject the null hypothesis.
+- **Conclusion:** There's significant evidence that the variances are not equal.
+
+---

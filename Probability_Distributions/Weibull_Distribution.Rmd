@@ -1,14 +1,16 @@
 ---
-title: "Weibull distribution"
-output: html_document
+title: The Weibull Probability Distribution
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-
-# - http://www.math.utah.edu/~lzhang/teaching/3070summer2009/Daily%20Updates/lectures/sec4_5.pdf
+```{css my-header-colors, echo = FALSE}
+.page-header {
+    background-image: linear-gradient(120deg, green, lightgreen);
+}
 ```
-
 
 
 ### The Weibull Distribution
@@ -19,16 +21,18 @@ The Weibull distribution is used extensively in reliability applications to mode
 
 The formula for the probability density function of the general Weibull distribution is
 
-\[ f(x)=\gamma\alpha(x-\mu\alpha)(\gamma-1)exp(-((x-\mu)/\alpha)\gamma)x=\mu;\gamma,\alpha>0\]
+\[ f(x)=\gamma \alpha(x-\mu\alpha)(\gamma-1)exp(-((x-\mu)/\alpha)\gamma)x=\mu;\gamma,\alpha>0\]
 
 where \gamma is the shape parameter, \mu is the location parameter and \alpha is the scale parameter. 
 
-The case where \mu = 0 and \alpha = 1 is called the ***standard Weibull distribution***. 
+The case where \mu = 0 and $\alpha = 1$ is called the ***standard Weibull distribution***. 
+
+-----------------------------------------------------------------------------------
 The case where \mu = 0 is called the 2-parameter Weibull distribution. The equation for the standard Weibull distribution reduces to
 
-\[ f(x)=\gammax(\gamma-1)exp(-(x\gamma))x=0;\gamma>0 \]
+\[ f(x)=\gamma x(\gamma-1)exp(-(x\gamma))x=0;\gamma>0 \]
 
-Since the general form of probability functions can be expressed in terms of the standard distribution, all subsequent formulas in this section are given for the standard form of the function.
+Since the general form of probability functions can be expressed in terms of the standard distribution, all subsequent formulas in this section are given for the ***standard form*** of the function.
 
 ----------------------------------------------------------------------------------
 

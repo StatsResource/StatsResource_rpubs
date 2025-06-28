@@ -1,0 +1,165 @@
+---
+title: "Introduction to Statistical Process Control"
+subtitle: "Statistical Process Control"
+author: StatsResource
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+```{css my-header-colors, echo = FALSE}
+.page-header {
+    background-image: linear-gradient(120deg,  #FA003F, #7C0A02 );
+}
+```
+ 
+ 
+ 
+ 
+
+
+# Statistical Process Control
+
+Statistical Process Control (SPC) is an industry-standard methodology for measuring and controlling quality during the manufacturing process.
+
+Quality data in the form of product or process measurements are obtained in real time during manufacturing. This data is then plotted on a graph with pre-determined **control limits**. Control limits are determined by the capability of the process, whereas specification limits are defined by the client's needs.
+
+---
+
+## Control Limits on an X̄-Range Chart
+
+- Data **within** the control limits indicates the process is operating as expected.
+- Variations **within** the limits are typically due to *common causes* — natural, expected variation.
+- Data **outside** the limits suggests an *assignable cause* — indicating the process may need attention before defects occur.
+
+---
+
+## What is SPC?
+
+SPC is a quality control method that uses statistical techniques to monitor and control processes. When implemented effectively, it helps:
+
+- Ensure processes operate at peak potential.
+- Maximize the production of conforming products.
+- Minimize waste, rework, or scrap.
+
+SPC is applicable to **any measurable process** that produces a "conforming product." Key SPC tools include:
+
+- Control charts
+- Continuous improvement practices
+- Design of experiments
+
+A common example: monitoring a manufacturing line.
+
+---
+
+## Notes & Resources
+
+- [Statistical Process Control Definitions](https://dl.dropboxusercontent.com/u/6044937/Stats2/SPC-Definitions.pdf)
+- [Control Charts Overview](https://dl.dropboxusercontent.com/u/6044937/Stats2/SPC-ControlCharts.pdf)
+- [Control Charts — Worked Example](https://dl.dropboxusercontent.com/u/6044937/SPC%20and%20IndStats/SPC%20Control%20Charts%20Example.pdf)
+- [WECO Tests](https://dl.dropboxusercontent.com/u/6044937/Stats2/SPC-WecoTests.pdf)
+- [Control Limits — Worked Example](https://dl.dropboxusercontent.com/u/6044937/SPC%20and%20IndStats/SPC%20Worked%20Example%202.pdf)
+- [CUSUM Charts](https://dl.dropboxusercontent.com/u/6044937/Stats2/SPC-CUSUM.pdf)
+- [Process Capability](https://dl.dropboxusercontent.com/u/6044937/Stats2/SPC-ProcessCapability.pdf)
+- [Process Capability Indices](https://dl.dropboxusercontent.com/u/6044937/Stats2/SPC-CapabilityIndices.pdf)
+
+---
+
+## Attribute Data
+
+Attribute data — or "count data" — captures **occurrence** rather than measurement. For example:
+
+- Attributes: "Number of patients with a fever"
+- Variables: "Measured temperature of patients"
+
+### Key Points:
+
+- Binary in nature (Yes/No, Pass/Fail)
+- Requires conversion to *discrete variable data* to be analyzed
+- Examples: presence/absence of labels, completion of assembly steps
+- Less predictive than variables data
+- Not acceptable for production part submissions unless variable data is unavailable
+
+### Control Charts for Attribute Data:
+
+- **P Chart** (percent defective)
+- **NP Chart** (number defective)
+- **C Chart** (count of defects)
+- **U Chart** (defects per unit)
+- **Quality Score Chart**
+- **Demerit Chart**
+
+---
+
+## Control Charts
+
+A **control chart** is a graph used to study how a process changes over time. Features include:
+
+- A **central line** for the average
+- **Upper and lower control limits**
+- Data points in time sequence
+
+By comparing current data to historical control limits, you can assess whether variation is due to common or special causes.
+
+### Types:
+
+- **Variable Data Charts**: used in pairs (mean & range)
+- **Attribute Data Charts**: used individually
+
+> Think of it like target shooting: the *average* is where shots cluster, and the *range* is how tightly they group.
+
+---
+
+### When to Use a Control Chart
+
+- To control processes by fixing problems as they arise
+- To predict outcome ranges
+- To determine process stability
+- To detect common vs. special cause variation
+- To guide whether to tweak or redesign a process
+
+---
+
+## Reference
+
+Nancy R. Tague’s  
+[*The Quality Toolbox*, 2nd Edition](http://asq.org/quality-press/display-item/index.html?item=H1224)  
+ASQ Quality Press, 2004, pp. 155–158
+
+---
+
+
+
+#### Run Charts
+
+Run Charts are basic trend charts that may be used with both variables (data that is both quantitative and continuous in measurement, such as a measured dimension or time) and attributes (count) data. The Run chart monitors the process location over time. Run Charts are NOT control charts, as they do not have statistical control limits. For that reason, they may not be used to establish statistical control of a process or to measure process capability.
+<p>
+<strong>When to Use a Run Chart</strong>
+
+Run Charts are sometimes used when there is insufficient data to properly analyze a process using statistical control charts. They should never be used in place of control charts, and cannot offer the benefits of control charts (mainly that of ascertaining whether a process is in a state of statistical control, or to determine process capability).<p>
+The x-axes are time based, so that the charts show a history of the process. For this reason, you must have data that is time-ordered; that is, entered in the sequence from which it was generated.<p>
+Run Charts typically use three of the standard eight Western Electric / Nelson Run Tests Rules. These three rules provide a broad indication of process stability, but by themselves lack the sensitivity of statistical control charts.
+
+---
+
+### Attribute Data
+
+
+
+Attribute data is also known as "count" data. Typically, we will count the number of times we observe some condition (usually something we do not like, such as an error) in a given sample from the process. This is different from measurement data in its resolution. 
+<p>
+Attribute data has less resolution, since we only count if something occurs, rather than taking a measurement to see how close we are to the condition. For example, Attributes data for a health care process might include the number of patients with a fever, whereas Variables data for the same process might be the measurement of the patient temperature.
+<p>
+Thus, Attributes data generally provides us with less information than measurement (variables) data would for the same process. Thus, for attributes data, we will generally not be able to predict if the process is trending towards an undesirable state, since it is already in this condition.
+<p>
+<h4>Summary</h4>
+
+* Attribute data is purely binary in nature. Good or Bad, Yes or No. No analysis can be performed on attribute data.
+* Attribute data must be converted to a form of Variable data called<h4> discrete data</h4> in order to be counted or useful.
+* Attribute data is qualitative data that can be counted for recording and analysis.
+* Examples include the presence or absence of a required label, the installation of all required fasteners.
+* Attribute data is not acceptable for production part submissions unless variable data cannot be obtained.
+* The control charts based on attribute data are percent chart, number of affected units chart, count chart, count-per-unit chart, quality score chart and demerit chart.
+
+

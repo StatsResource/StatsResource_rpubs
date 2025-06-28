@@ -1,0 +1,119 @@
+---
+title: "The paired t-test"
+subtitle: "Working with Shapefiles"
+author: DragonflyStats.github.io
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+
+## Introduction
+
+The paired *t*-test is a statistical method used to determine whether there is a **significant difference between paired measurements**—for example, measurements taken *before and after* an intervention. It evaluates whether the **mean of case-wise differences** between paired observations is equal to zero.
+
+---
+
+## Test Statistic
+
+Under the null hypothesis:
+
+- \( H_0: \mu_d = 0 \), meaning no difference between paired values.
+- The test statistic (TS) is calculated as:
+
+\[
+TS = \frac{\bar{d} - \mu_d}{\frac{s_d}{\sqrt{n}}}
+\]
+
+Where:  
+- \( \bar{d} \) = sample mean of the differences  
+- \( s_d \) = standard deviation of the differences  
+- \( n \) = number of pairs  
+
+---
+
+## Worked Example
+
+An automobile manufacturer tested fuel efficiency on 10 cars using standard gasoline **with and without** an additive. Same driver, same tuning. Data collected:
+
+| Car | With Additive | Without Additive | \( d_i \) | \( d_i^2 \) |
+|-----|---------------|------------------|-----------|-------------|
+| 1   | 36.7          | 36.2             | 0.5       | 0.25        |
+| 2   | 35.8          | 35.7             | 0.1       | 0.01        |
+| 3   | 31.9          | 32.3             | -0.4      | 0.16        |
+| 4   | 29.3          | 29.6             | -0.3      | 0.09        |
+| 5   | 28.4          | 28.1             | 0.3       | 0.09        |
+| 6   | 25.7          | 25.8             | -0.1      | 0.01        |
+| 7   | 24.2          | 23.9             | 0.3       | 0.09        |
+| 8   | 22.6          | 22.0             | 0.6       | 0.36        |
+| 9   | 21.9          | 21.5             | 0.4       | 0.16        |
+| 10  | 20.3          | 20.0             | 0.3       | 0.09        |
+
+---
+
+## Example Computation
+
+From another data set with \( n = 14 \):
+
+- \( \bar{d} = 8.21 \)
+- \( \mu_d = 0 \)
+- \( s_d = 7.90 \)
+
+\[
+TS = \frac{8.21 - 0}{\frac{7.90}{\sqrt{14}}} = 3.881
+\]
+
+---
+
+## Decision Criteria
+
+- This is a **two-tailed test** at \( \alpha = 0.05 \)
+- Degrees of Freedom: \( df = n - 1 = 13 \)
+- Critical Value (CV): 2.1603  
+- **Decision Rule:** Reject \( H_0 \) if \( |TS| > CV \)
+
+In this example, since \( 3.881 > 2.1603 \), we reject the null hypothesis.
+
+---
+
+## Alternative Approach: *p*-Value
+
+You can also use statistical software (like **R**, **SAS**, or **SPSS**) to compute the *p*-value.
+
+```R
+t.test(Before, After, paired = TRUE)
+```
+
+**Output:**
+```
+        Paired t-test
+
+data:  Before and After
+t = 3.8881, df = 13, p-value = 0.001868
+alternative hypothesis: true difference in means is not 0
+95 percent confidence interval:
+  3.650075 12.778496
+sample estimates:
+mean of the differences
+  8.214286
+```
+
+Since **p-value < 0.0250**, we reject the null hypothesis.
+
+---
+
+## Confidence Interval Interpretation
+
+- The 95% Confidence Interval for the mean difference is (3.65, 12.78).
+- **Since 0 is not within the interval**, this provides further support to **reject \( H_0 \)**.
+- We are 95% confident that the true mean difference lies within this range.
+
+---
+
+## Summary of Decision Rule
+
+> **If** \( |TS| > CV \) **then** Reject \( H_0 \)  
+> **If** \( |TS| \le CV \) **then** Fail to Reject \( H_0 \)
+
+---
