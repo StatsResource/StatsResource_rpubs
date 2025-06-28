@@ -1,0 +1,80 @@
+---
+title: The Geometric Probability Distribution
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+```{css my-header-colors, echo = FALSE}
+.page-header {
+    background-image: linear-gradient(120deg, darkgreen, lightgreen);
+}
+```
+# Understanding the Geometric Distribution
+
+The **geometric distribution** is a discrete probability distribution that models the number of *Bernoulli trials* required to achieve the first success. It's like flipping a coin or rolling a die repeatedly until a specific outcome occurs.
+
+## When to Use It
+
+Use a geometric distribution when:
+- Each trial is independent.
+- There are only two outcomes: success or failure.
+- The probability of success, denoted by \( p \), remains constant.
+- You're interested in either:
+  - The trial number of the **first success**, or
+  - The number of **failures** before the first success.
+
+---
+
+## Two Types of Geometric Distributions
+
+There are two closely related versions:
+
+| Type | Interpretation | Support | Probability Mass Function |
+|------|----------------|---------|-----------------------------|
+| Type I (Shifted) | Number of trials until first success | \( \{1, 2, 3, \dots\} \) | \( P(X = k) = (1 - p)^{k-1} p \) |
+| Type II | Number of failures before first success | \( \{0, 1, 2, \dots\} \) | \( P(Y = k) = (1 - p)^k p \) |
+
+Note: The term “geometric distribution” can refer to either one, so always clarify which form you're using.
+
+---
+
+## Example
+
+Suppose you're rolling a fair six-sided die until you get your first "1":
+- Success probability: \( p = \frac{1}{6} \)
+- The number of rolls follows a geometric distribution.
+
+---
+
+## Key Properties
+
+The distributions differ in their expected values and variances:
+
+| Type | Mean | Variance |
+|------|------|----------|
+| Trials until success | \( \frac{1}{p} \) | \( \frac{1 - p}{p^2} \) |
+| Failures before success | \( \frac{1 - p}{p} \) | \( \frac{1 - p}{p^2} \) |
+
+---
+
+## Recursive Cumulants (Advanced)
+
+Let \( \mu = \frac{1 - p}{p} \) be the mean of the failures-before-success distribution. The cumulants \( \kappa_n \) satisfy the recursive relation:
+
+\[
+\kappa_{n+1} = \mu(\mu + 1) \frac{d\kappa_n}{d\mu}
+\]
+
+This relates each cumulant to its predecessor using the mean.
+
+---
+
+## Quick Summary
+
+- Geometric distributions model the number of trials or failures before the first success.
+- The two forms look similar but describe different things—always specify which you're using.
+- These distributions are memoryless: the probability of success remains unchanged no matter how many failures have occurred.
+
+---

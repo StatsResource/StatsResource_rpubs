@@ -1,0 +1,109 @@
+---
+title: The Hypergeometric Probability Distribution
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+```{css my-header-colors, echo = FALSE}
+.page-header {
+    background-image: linear-gradient(120deg, darkgreen, lightgreen);
+}
+```
+# The Hypergeometric Distribution: A Tutorial
+
+## Introduction
+
+The **hypergeometric distribution** models the probability of drawing a specific number of successes from a finite population *without replacement*. It's commonly used in scenarios such as quality control, lotteries, and sampling without replacement in general.
+
+---
+
+## When to Use the Hypergeometric Distribution
+
+Use this distribution when the following conditions are met:
+
+- The population has two distinct types (e.g. pass/fail, male/female).
+- Sampling is done *without replacement*, so the probability of success changes after each draw.
+- You're interested in the number of successes in a fixed number of draws.
+
+This contrasts with the binomial distribution, which assumes replacement or an infinite population (meaning the success probability stays constant).
+
+---
+
+## Probability Mass Function (PMF)
+
+If a random variable \( X \) follows a hypergeometric distribution, its probability mass function is:
+
+\[
+P(X = k) = \frac{\binom{K}{k} \binom{N - K}{n - k}}{\binom{N}{n}}
+\]
+
+Where:
+- \( N \): Total population size
+- \( K \): Number of success states in the population
+- \( n \): Number of items drawn from the population
+- \( k \): Number of observed successes
+- \( \binom{a}{b} \): Binomial coefficient, or “a choose b”
+
+---
+
+## Why Not Use the Bernoulli/Binomial Model?
+
+When sampling is without replacement:
+- Each draw slightly changes the composition of the population.
+- Thus, probabilities shift dynamically, and the **Bernoulli process no longer applies**.
+
+The hypergeometric distribution captures this dynamic change accurately.
+
+---
+
+## Group-Based Perspective
+
+In problems involving distinct subgroups, the probability of a particular group outcome can be modeled as:
+
+\[
+P = \frac{ \binom{n_1}{k_1} \binom{n_2}{k_2} }{ \binom{n_T}{k_T} }
+\]
+
+Where:
+- \( n_1 \) and \( n_2 \): Sizes of group 1 and group 2
+- \( k_1 \) and \( k_2 \): Number selected from each group
+- \( n_T = n_1 + n_2 \)
+- \( k_T = k_1 + k_2 \)
+
+This is useful when thinking of drawing from multiple categories or compartments.
+
+---
+
+## Example
+
+**Problem**: Suppose we want to select a group of 8 people from a population of 18, which includes 10 males and 8 females.  
+**Question**: What is the probability that the selected group contains exactly 5 females?
+
+Let:
+- Total population \( N = 18 \)
+- Number of successes (females) \( K = 8 \)
+- Sample size \( n = 8 \)
+- Number of desired successes \( k = 5 \)
+
+Apply the PMF:
+
+\[
+P(X = 5) = \frac{\binom{8}{5} \binom{10}{3}}{\binom{18}{8}}
+\]
+
+This gives the probability of selecting exactly 5 females (and therefore 3 males) in the sample.
+
+---
+
+## Summary
+
+The hypergeometric distribution is ideal when dealing with:
+- Small populations
+- No replacement
+- A finite number of success states
+
+Always be sure to distinguish it from the binomial distribution, and pay attention to the population composition as it shifts during sampling.
+
+---
