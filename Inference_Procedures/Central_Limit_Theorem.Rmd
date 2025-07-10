@@ -1,0 +1,22 @@
+Of course! Here's the same tutorial with a clean, emoji-free layout:
+
+---
+
+## Central Limit Theorem (CLT): A Quick Guide
+
+The Central Limit Theorem is one of the most important principles in statistics. It tells us how sampling can transform the behavior of data, even when the original data doesn't resemble a bell curve at all.
+
+### What It Means
+- No matter what shape the original population distribution has (skewed, uniform, bimodal, etc.), if we keep taking **larger samples** and calculating their means, the distribution of those means starts looking **more and more like a normal distribution**.
+
+- When the sample size exceeds **n > 30**, the sample mean can be assumed to be **approximately normally distributed**, even if the original population is quite non-normal.
+
+### Why It Matters
+- It enables us to use the normal distribution to make predictions and calculate confidence intervals, which are vital tools in statistics.
+
+- It's especially useful when working with messy, real-world data, allowing us to apply powerful methods despite irregularities.
+
+### Side Note
+- If the population is only **slightly non-normal**, smaller sample sizes may be sufficient for the CLT to apply.
+
+---

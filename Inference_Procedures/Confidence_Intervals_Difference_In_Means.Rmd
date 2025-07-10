@@ -1,0 +1,42 @@
+## Confidence Intervals: Difference Between Two Means
+
+A **confidence interval for the difference between two means** helps estimate the range where the true difference between population means is likely to lie, based on sample data.
+
+### Assumptions
+To construct this interval, we rely on three main assumptions:
+- **Equal variances** in both populations (homogeneity of variance).
+- **Normal distribution** of both populations.
+- **Independent sampling** of all values.
+
+### Standard Error of the Difference
+The standard error (SE) quantifies the variability in the difference between sample means:
+
+$$
+S.E.(\bar{X}-\bar{Y}) = \sqrt{\frac{s^2_x}{n_x} + \frac{s^2_y}{n_y}}
+$$
+
+Where:
+- \( s^2_x \), \( s^2_y \): sample variances
+- \( n_x \), \( n_y \): sample sizes
+- Degrees of freedom: \( n_x + n_y - 2 \)
+
+### Example Calculation
+
+| Group | Sample Size | Mean   | Variance |
+|-------|-------------|--------|----------|
+| X     | 17          | 5.353  | 2.743    |
+| Y     | 17          | 3.882  | 2.985    |
+
+- Point estimate: \( \bar{x} - \bar{y} = 1.4699 \)
+- Standard error: \( SE = 0.5805 \)
+- Critical value: 1.96 (for 95% confidence)
+
+**Confidence Interval:**
+$$
+1.4699 \pm (1.96 \times 0.5805) = (0.33212,\ 2.60768)
+$$
+
+### Interpretation
+There is evidence that the mean of group X is higher than group Y, and the true population difference likely falls between approximately **0.33 and 2.61**.
+
+---

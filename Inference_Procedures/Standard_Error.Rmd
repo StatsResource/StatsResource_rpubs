@@ -1,0 +1,22 @@
+## Standard Error: A Brief Guide
+
+The **standard error (SE)** quantifies how much variability exists in a sample statistic from one sample to another. It essentially measures the **spread of the sampling distribution**, helping us understand how close our sample estimates are likely to be to the true population values.
+
+### Key Points
+- Every point estimate (like the mean, proportion, or difference between means) has a corresponding standard error.
+- It’s useful for constructing **confidence intervals** and conducting **hypothesis tests**.
+
+### Formula for the Standard Error of the Mean
+- When the population standard deviation \( \sigma \) is known:
+
+  $$
+  S.E( \bar{x} ) = \frac{\sigma}{\sqrt{n}}
+  $$
+
+- In practice, \( \sigma \) is usually unknown, so we estimate it using the sample standard deviation \( s \):
+
+  $$
+  S.E( \bar{x} ) = \frac{s}{\sqrt{n}}
+  $$
+
+As sample size increases, the standard error gets smaller—indicating more precision in our estimate. 
