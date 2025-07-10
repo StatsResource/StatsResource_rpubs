@@ -1,6 +1,6 @@
 ---
 title: Friedman Test
-author: DragonflyStats.github.io
+author: StatsResurce  - Non Parametric Statistics
 output:
   prettydoc::html_pretty:
     theme: cayman

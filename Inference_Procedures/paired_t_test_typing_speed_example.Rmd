@@ -1,0 +1,101 @@
+---
+title: The Paired t-Test - Worked Example
+subtitle: Evaluating the Impact of Preparatory Courses on Exam Performance
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+```{css my-header-colors, echo = FALSE}
+.page-header {
+    background-image: linear-gradient(120deg, darkorange, yellow);
+}
+```
+
+# Evaluating the Impact of Preparatory Courses on Exam Performance
+
+Do preparatory courses actually improve performance in standardized tests like the CompTIA exams? One way to explore this is by analyzing test scores from before and after the course.
+
+This guide walks through a simple statistical analysis using a sample of ten students. We’ll calculate:
+
+1. The difference in scores for each student  
+2. The mean of those differences  
+3. The standard deviation to understand variability in improvements  
+
+---
+
+## Sample Data
+
+| Student        | A   | B   | C   | D   | E   | F   | G   | H    | I   | J    |
+|----------------|-----|-----|-----|-----|-----|-----|-----|------|-----|------|
+| Score Before   | 700 | 840 | 830 | 860 | 840 | 690 | 830 | 1180 | 930 | 1070 |
+| Score After    | 720 | 840 | 820 | 900 | 870 | 700 | 800 | 1200 | 950 | 1080 |
+
+---
+
+## Step 1: Calculate Score Differences
+
+For each student, subtract the "before" score from the "after" score:
+
+\[
+d_i = \text{Score After} - \text{Score Before}
+\]
+
+| Student | Difference \( d_i \) |
+|---------|----------------------|
+| A       | 20                   |
+| B       | 0                    |
+| C       | -10                  |
+| D       | 40                   |
+| E       | 30                   |
+| F       | 10                   |
+| G       | -30                  |
+| H       | 20                   |
+| I       | 20                   |
+| J       | 10                   |
+
+---
+
+## Step 2: Calculate Mean Difference
+
+To find the average improvement:
+
+\[
+\bar{d} = \frac{\sum d_i}{n} = \frac{110}{10} = 11
+\]
+
+This means the average score improvement is **11 points**.
+
+---
+
+## Step 3: Calculate Standard Deviation
+
+Standard deviation gives a sense of how consistently scores changed.
+
+First, compute the sum of squared differences:
+
+\[
+\sum d_i^2 = 20^2 + 0^2 + (-10)^2 + 40^2 + 30^2 + 10^2 + (-30)^2 + 20^2 + 20^2 + 10^2 = 5900
+\]
+
+Then use the formula:
+
+\[
+s_d = \sqrt{ \frac{\sum d_i^2 - n\bar{d}^2}{n - 1} }
+\]
+
+\[
+s_d = \sqrt{ \frac{5900 - 10(11)^2}{9} } = \sqrt{ \frac{4690}{9} } \approx \sqrt{521.11} \approx 22.83
+\]
+
+---
+
+## Final Thoughts
+
+- The **mean improvement** suggests students benefited from the preparatory course.  
+- The **standard deviation of 22.83** shows that the amount of improvement varied.  
+- While some students improved a lot, others showed little or no change.
+
+This variability highlights the importance of considering individual learning styles and backgrounds when evaluating the effectiveness of such courses.
+

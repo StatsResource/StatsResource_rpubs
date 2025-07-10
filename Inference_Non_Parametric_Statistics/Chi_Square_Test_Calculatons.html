@@ -9,10 +9,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<meta name="author" content="StatsResurce - Non Parametric Statistics" />
 
 
-<title>Friedman Test</title>
+<title>The Chi-Squared Test</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -29,67 +28,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
 </script>
 
 
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css" data-origin="pandoc">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-{ counter-reset: source-line 0; }
-pre.numberSource code > span
-{ position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-{ content: counter(source-line);
-position: relative; left: -1em; text-align: right; vertical-align: baseline;
-border: none; display: inline-block;
--webkit-touch-callout: none; -webkit-user-select: none;
--khtml-user-select: none; -moz-user-select: none;
--ms-user-select: none; user-select: none;
-padding: 0 4px; width: 4em;
-color: #aaaaaa;
-}
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
-div.sourceCode
-{ }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } code span.at { color: #7d9029; } code span.bn { color: #40a070; } code span.bu { color: #008000; } code span.cf { color: #007020; font-weight: bold; } code span.ch { color: #4070a0; } code span.cn { color: #880000; } code span.co { color: #60a0b0; font-style: italic; } code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } code span.do { color: #ba2121; font-style: italic; } code span.dt { color: #902000; } code span.dv { color: #40a070; } code span.er { color: #ff0000; font-weight: bold; } code span.ex { } code span.fl { color: #40a070; } code span.fu { color: #06287e; } code span.im { color: #008000; font-weight: bold; } code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } code span.kw { color: #007020; font-weight: bold; } code span.op { color: #666666; } code span.ot { color: #007020; } code span.pp { color: #bc7a00; } code span.sc { color: #4070a0; } code span.ss { color: #bb6688; } code span.st { color: #4070a0; } code span.va { color: #19177c; } code span.vs { color: #4070a0; } code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } a.sourceLine {
-pointer-events: auto;
-}
-</style>
-<script>
-// apply pandoc div.sourceCode style to pre.sourceCode instead
-(function() {
-  var sheets = document.styleSheets;
-  for (var i = 0; i < sheets.length; i++) {
-    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
-    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
-      var rule = rules[j];
-      // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
-      var style = rule.style.cssText;
-      // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
-      // replace div.sourceCode by a pre.sourceCode rule
-      sheets[i].deleteRule(j);
-      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
-    }
-  }
-})();
-</script>
 
 
 
@@ -107,79 +45,141 @@ pointer-events: auto;
 
 
 <section class="page-header">
-<h1 class="title toc-ignore project-name">Friedman Test</h1>
-<h4 class="author project-author">StatsResurce - Non Parametric
-Statistics</h4>
+<h1 class="title toc-ignore project-name">The Chi-Squared Test</h1>
 </section>
 
 
 
 <section class="main-content">
-<div id="friedman-rank-sum-test" class="section level2">
-<h2>Friedman Rank Sum Test</h2>
-<p>Performs a Friedman rank sum test with unreplicated blocked data.</p>
-<p><tt>friedman.test</tt> can be used for analyzing unreplicated
-complete block designs (i.e., there is exactly one observation in
-<strong>y</strong> for each combination of levels of groups and blocks)
-where the normality assumption may be violated.</p>
-<p>The null hypothesis is that apart from an effect of
-<strong>blocks</strong>, the location parameter of <strong>y</strong> is
-the same in each of the groups.</p>
-<div id="warpbreaks" class="section level3">
-<h3>warpbreaks</h3>
-<ul>
-<li>The number of Breaks in Yarn during Weaving</li>
-<li>This data set gives the number of warp breaks per loom, where a loom
-corresponds to a fixed length of yarn.</li>
-</ul>
-<p>A data frame with 54 observations on 3 variables.</p>
-<ul>
-<li><strong><em>breaks</em></strong> (numeric) The number of breaks</li>
-<li><strong><em>wool</em></strong> (factor) The type of wool (A or
-B)</li>
-<li><strong><em>tension</em></strong> (factor) The level of tension (L,
-M, H)</li>
-</ul>
-<p>There are measurements on 9 looms for each of the six types of warp
-(AL, AM, AH, BL, BM, BH).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">head</span>(warpbreaks)</span></code></pre></div>
-<pre><code>##   breaks wool tension
-## 1     26    A       L
-## 2     30    A       L
-## 3     54    A       L
-## 4     25    A       L
-## 5     70    A       L
-## 6     52    A       L</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>wb <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(warpbreaks<span class="sc">$</span>breaks,</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>                <span class="at">by =</span> <span class="fu">list</span>(<span class="at">w =</span> warpbreaks<span class="sc">$</span>wool,</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>                          <span class="at">t =</span> warpbreaks<span class="sc">$</span>tension),</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>                <span class="at">FUN =</span> mean)</span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>wb</span></code></pre></div>
-<pre><code>##   w t        x
-## 1 A L 44.55556
-## 2 B L 28.22222
-## 3 A M 24.00000
-## 4 B M 28.77778
-## 5 A H 24.55556
-## 6 B H 18.77778</code></pre>
+<style type="text/css">
+.page-header {
+background-image: linear-gradient(120deg, lightgreen, orange);
+}
+</style>
+<div id="chi-square-test-of-association" class="section level1">
+<h1>Chi-Square Test of Association</h1>
+<p>The Chi-Square Test of Association is used to determine whether two
+categorical variables are statistically related in a contingency
+table.</p>
+<hr />
+<div id="understanding-the-contingency-table" class="section level2">
+<h2>Understanding the Contingency Table</h2>
+<p>We begin with the following observed frequency table:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Cat X</th>
+<th>Cat Y</th>
+<th>Cat Z</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Cat A</strong></td>
+<td>?</td>
+<td>60</td>
+<td>?</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td><strong>Cat B</strong></td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>400</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td>150</td>
+<td>180</td>
+<td>270</td>
+<td>600</td>
+</tr>
+</tbody>
+</table>
+<p>We are interested in calculating the <strong>expected
+frequency</strong> for <strong>Cell (1,1)</strong> — the intersection of
+<strong>Cat A</strong> and <strong>Cat X</strong>.</p>
+<hr />
 </div>
-<div id="formulations" class="section level3">
-<h3>Formulations</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">friedman.test</span>(wb<span class="sc">$</span>x, wb<span class="sc">$</span>w, wb<span class="sc">$</span>t)</span></code></pre></div>
-<pre><code>## 
-##  Friedman rank sum test
-## 
-## data:  wb$x, wb$w and wb$t
-## Friedman chi-squared = 0.33333, df = 1, p-value = 0.5637</code></pre>
+<div id="calculating-expected-frequency" class="section level2">
+<h2>Calculating Expected Frequency</h2>
+<p>The expected frequency for a cell is calculated as:</p>
+<p><span class="math display">\[
+E_{(i,j)} = \frac{\text{Row Total}_i \times \text{Column
+Total}_j}{\text{Grand Total}}
+\]</span></p>
+<p>For <strong>Cell (1,1)</strong>:</p>
+<ul>
+<li>Row Total (Cat A): 200<br />
+</li>
+<li>Column Total (Cat X): 150<br />
+</li>
+<li>Grand Total: 600</li>
+</ul>
+<p><span class="math display">\[
+E_{(1,1)} = \frac{200 \times 150}{600} = \frac{30,000}{600} = 50
+\]</span></p>
+<p>So, the expected value in Cell (1,1) is <strong>50</strong>.</p>
+<hr />
 </div>
-<div id="alternative-formulations" class="section level3">
-<h3>Alternative Formulations</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">friedman.test</span>(x <span class="sc">~</span> w <span class="sc">|</span> t, <span class="at">data =</span> wb)</span></code></pre></div>
-<pre><code>## 
-##  Friedman rank sum test
-## 
-## data:  x and w and t
-## Friedman chi-squared = 0.33333, df = 1, p-value = 0.5637</code></pre>
+<div id="completing-the-table-of-expected-frequencies" class="section level2">
+<h2>Completing the Table of Expected Frequencies</h2>
+<p>Now, use the same formula to compute all other expected values:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Cat X</th>
+<th>Cat Y</th>
+<th>Cat Z</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Cat A</strong></td>
+<td>50</td>
+<td>60</td>
+<td>90</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td><strong>Cat B</strong></td>
+<td>100</td>
+<td>120</td>
+<td>180</td>
+<td>400</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td>150</td>
+<td>180</td>
+<td>270</td>
+<td>600</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="critical-value-and-decision-rule" class="section level2">
+<h2>Critical Value and Decision Rule</h2>
+<p>To evaluate the statistical significance:</p>
+<ul>
+<li>Choose a <strong>significance level</strong> (<span class="math inline">\(\alpha\)</span>), commonly 0.05<br />
+</li>
+<li>Determine <strong>degrees of freedom (df)</strong> using:<br />
+<span class="math display">\[
+df = (r - 1)(c - 1)
+\]</span> where <span class="math inline">\(r\)</span> = number of rows,
+<span class="math inline">\(c\)</span> = number of columns</li>
+</ul>
+<p>Compare the computed Chi-Square test statistic to the critical value
+from the Chi-Square distribution table. If the test statistic is
+<strong>greater</strong> than the critical value, reject the null
+hypothesis of independence.</p>
 </div>
 </div>
 </section>

@@ -1,8 +1,19 @@
-Uniform Distributions {data-navmenu="Continuous Distributions"}
-=====================================
+---
+title: The Weibull Probability Distribution
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
 
-Column {.tabset}
--------------------------------------------------
+```{css my-header-colors, echo = FALSE}
+.page-header {
+    background-image: linear-gradient(120deg, green, lightgreen);
+}
+```
+
+
+## Uniform Distributions 
 
 ### Theory
 
@@ -12,16 +23,7 @@ A random variable is called a uniform random variable the interval (a,b) if its 
 
 \[f_X(x) = \begin{cases}  {1 \over b-a } \\ 0 \end{cases} \]
 
-### Videos
-
-<h5>Uniform Distribution</h5>
-
-
-* <a href= "https://www.youtube.com/watch?v=lxQEM8J8VrU">Uniform Random Variables</a>
-* <a href = "https://youtu.be/093X1SWd1cg/">Uniform Random Variables</a>
-* <a href = "https://youtu.be/OBIUmaHGgfA/"> Sum Of Uniform Random Variables </a>
-
-
+--------------------------------------------------------------------------------
 
 
 ### Worked Examples
@@ -35,10 +37,6 @@ a. Write down the probability density function for this distribution.
 b. Find the probability that a customer will take a salad weighing more than 400g.
 c. Find the probability that a customer will take a salad weighing between 320g and 400g.
 d. What are the mean and standard deviations of the salad weights taken by customers.
-
-<h5> Exercises </h5> 
-* <a href="https://youtu.be/ok9k-oJlhjs"> Click here for the solution</a> 
-
 
 -----------------------------------------------------------------------
 

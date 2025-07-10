@@ -1,11 +1,20 @@
 ---
 title: "Binomial Test"
-output: html_document
+subtitle: "Statistical Process Control with R"
+author: "StatsResource: Specal Topics In Probabilty"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{css my-header-colors, echo = FALSE}
+.page-header {
+    background-image: linear-gradient(120deg,  #FA003F, #7C0A02 );
+}
 ```
+ 
+ 
 
 ### Binomial test
  

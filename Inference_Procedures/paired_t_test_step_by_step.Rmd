@@ -1,0 +1,133 @@
+---
+title: The Paired t-Test 
+subtitle: A Step-by-Step Guide
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+```{css my-header-colors, echo = FALSE}
+.page-header {
+    background-image: linear-gradient(120deg, darkorange, yellow);
+}
+```
+
+
+# Paired t-Test: A Step-by-Step Guide
+
+## What Is a Paired t-Test?
+
+A **paired t-test** is a statistical method used to determine whether there is a significant difference between two sets of related observations. It’s especially useful when the **same subjects are measured under two different conditions**.
+
+### Common Use Cases
+
+- Test scores before and after a preparatory course
+- Comparing two treatment methods on the same group
+- Measurements by different instruments on the same subjects
+
+---
+
+## Test Scenario
+
+**Question:**  
+Does taking a preparatory course improve scores on standardized tests like the CompTIA exams?
+
+To answer this, we'll evaluate a sample dataset and compute:
+
+- Case-wise differences
+- Mean of these differences
+- Standard deviation and standard error
+- Perform a hypothesis test
+
+---
+
+## Sample Data
+
+| Subject | A   | B   | C   | D   | E   | F   | G   | H    | I   | J    |
+|---------|-----|-----|-----|-----|-----|-----|-----|------|-----|------|
+| Before  | 700 | 840 | 830 | 860 | 840 | 690 | 830 | 1180 | 930 | 1070 |
+| After   | 720 | 840 | 820 | 900 | 870 | 700 | 800 | 1200 | 950 | 1080 |
+
+---
+
+## Step 1: Calculate the Differences
+
+For each subject:
+
+\[
+d_i = \text{After} - \text{Before}
+\]
+
+| Subject | Difference \( d_i \) |
+|---------|----------------------|
+| A       | 20                   |
+| B       | 0                    |
+| C       | -10                  |
+| D       | 40                   |
+| E       | 30                   |
+| F       | 10                   |
+| G       | -30                  |
+| H       | 20                   |
+| I       | 20                   |
+| J       | 10                   |
+
+---
+
+## Step 2: Compute Summary Statistics
+
+### Mean of the Differences
+
+\[
+\bar{d} = \frac{\sum d_i}{n} = \frac{110}{10} = 11
+\]
+
+### Variance and Standard Deviation
+
+Sample variance:
+
+\[
+s_d^2 = \frac{\sum (d_i - \bar{d})^2}{n - 1}
+\]
+
+Alternatively, use:
+
+\[
+s_d = \sqrt{\frac{\sum d_i^2 - n\bar{d}^2}{n - 1}}
+\]
+
+From the data:
+
+\[
+\sum d_i^2 = 5900,\quad \bar{d} = 11,\quad n = 10
+\]
+
+\[
+s_d = \sqrt{\frac{5900 - 10(11^2)}{9}} = \sqrt{\frac{4690}{9}} \approx 22.83
+\]
+
+---
+
+## Step 3: Hypothesis Test
+
+**Null Hypothesis:**  
+\( H_0: \mu_d = 0 \) (no difference)
+
+**Alternative Hypothesis:**  
+\( H_1: \mu_d \ne 0 \) (a significant difference exists)
+
+Use the test statistic:
+
+\[
+t = \frac{\bar{d}}{s_d / \sqrt{n}} = \frac{11}{22.83 / \sqrt{10}} \approx 1.52
+\]
+
+Compare the computed t-statistic to the critical value from a t-distribution with \( n - 1 = 9 \) degrees of freedom at your chosen significance level (e.g., 0.05).
+
+---
+
+## Conclusion
+
+- The **mean improvement** is 11 points.
+- The **standard deviation** shows a spread of ±22.83.
+- The **t-test** assesses whether this improvement is statistically significant.

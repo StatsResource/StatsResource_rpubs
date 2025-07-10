@@ -1,0 +1,81 @@
+---
+title: The Chi-Squared Test
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+```{css my-header-colors, echo = FALSE}
+.page-header {
+    background-image: linear-gradient(120deg, lightgreen, orange);
+}
+```
+
+
+# Chi-Square Test of Association
+
+The Chi-Square Test of Association is used to determine whether two categorical variables are statistically related in a contingency table.
+
+---
+
+## Understanding the Contingency Table
+
+We begin with the following observed frequency table:
+
+|            | Cat X | Cat Y | Cat Z | Total |
+|------------|--------|--------|--------|--------|
+| **Cat A**  | ?      | 60     | ?      | 200    |
+| **Cat B**  | ?      | ?      | ?      | 400    |
+| **Total**  | 150    | 180    | 270    | 600    |
+
+We are interested in calculating the **expected frequency** for **Cell (1,1)** — the intersection of **Cat A** and **Cat X**.
+
+---
+
+## Calculating Expected Frequency
+
+The expected frequency for a cell is calculated as:
+
+\[
+E_{(i,j)} = \frac{\text{Row Total}_i \times \text{Column Total}_j}{\text{Grand Total}}
+\]
+
+For **Cell (1,1)**:
+
+- Row Total (Cat A): 200  
+- Column Total (Cat X): 150  
+- Grand Total: 600  
+
+\[
+E_{(1,1)} = \frac{200 \times 150}{600} = \frac{30,000}{600} = 50
+\]
+
+So, the expected value in Cell (1,1) is **50**.
+
+---
+
+## Completing the Table of Expected Frequencies
+
+Now, use the same formula to compute all other expected values:
+
+|            | Cat X | Cat Y | Cat Z | Total |
+|------------|--------|--------|--------|--------|
+| **Cat A**  | 50     | 60     | 90     | 200    |
+| **Cat B**  | 100    | 120    | 180    | 400    |
+| **Total**  | 150    | 180    | 270    | 600    |
+
+---
+
+## Critical Value and Decision Rule
+
+To evaluate the statistical significance:
+
+- Choose a **significance level** (\( \alpha \)), commonly 0.05  
+- Determine **degrees of freedom (df)** using:  
+  \[
+  df = (r - 1)(c - 1)
+  \]
+  where \( r \) = number of rows, \( c \) = number of columns  
+
+Compare the computed Chi-Square test statistic to the critical value from the Chi-Square distribution table. If the test statistic is **greater** than the critical value, reject the null hypothesis of independence.
